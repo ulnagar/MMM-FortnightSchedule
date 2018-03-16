@@ -2,7 +2,7 @@
 
 This is a module for the [MagicMirror²](https://github.com/MichMich/MagicMirror/).
 
-Todo: Insert description here!
+Display a cyclic fortnightly schedule in a calendar format
 
 ## Using the module
 

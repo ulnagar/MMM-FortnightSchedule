@@ -1,7 +1,7 @@
 {
   "name": "MMM-FortnightSchedule",
   "version": "1.0.0",
-  "description": "Todo: Insert description here!",
+  "description": "Display a cyclic fortnightly schedule in a calendar format",
   "main": "MMM-FortnightSchedule.js",
   "author": "",
   "license": "MIT",
