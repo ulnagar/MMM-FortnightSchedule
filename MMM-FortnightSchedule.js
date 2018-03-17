@@ -111,6 +111,7 @@ Module.register("MMM-FortnightSchedule", {
 
 	createTimetableRow: function(time, entry) {
 		var row = document.createElement("tr");
+		row.className = "schedule-line";
 		
 		var tdtime = document.createElement("td");
 		tdtime.className = "xsmall dimmed timeslot";
