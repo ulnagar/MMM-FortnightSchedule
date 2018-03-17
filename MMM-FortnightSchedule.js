@@ -131,11 +131,11 @@ Module.register("MMM-FortnightSchedule", {
 		var row = document.createElement("tr");
 		
 		var tdtime = document.createElement("td");
-		tdtime.className = "xsmall dimmed lessontime";
+		tdtime.className = "xsmall dimmed timeslot";
 		tdtime.appendChild(document.createTextNode(time));
 
 		var tdentry = document.createElement("td");
-		tdentry.className = "xsmall bright lesson";
+		tdentry.className = "xsmall bright entry";
 		tdentry.appendChild(document.createTextNode(entry));
 
 		row.appendChild(tdtime);
