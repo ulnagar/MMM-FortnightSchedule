@@ -11,38 +11,14 @@ Module.register("MMM-FortnightSchedule", {
 	defaults: {
 		updateInterval: 60000,
 		retryDelay: 5000,
-		yearStartWeek: "b",
-		config: {
-			timeslots: [ "Period 1", "Period 2"],
-			schedule: {
-				a: { 
-					mon: [ "Week A Monday Activity 1", "Week A Monday Activity 2" ],
-					tue: [ "Week A Tuesday Activity 1", "Week A Tuesday Activity 2" ],
-					wed: [ "Week A Wednesday Activity 1", "Week A Wednesday Activity 2" ],
-					thu: [ "Week A Thursday Activity 1", "Week A Thursday Activity 2" ],
-					fri: [ "Week A Friday Activity 1", "Week A Friday Activity 2" ],
-					sat: [ "Week A Saturday Activity 1", "Week A Saturday Activity 2" ],
-					sun: [ "Week A Sunday Activity 1", "Week A Sunday Activity 2" ]					
-				},
-				b: { 
-					mon: [ "Week B Monday Activity 1", "Week B Monday Activity 2" ],
-					tue: [ "Week B Tuesday Activity 1", "Week B Tuesday Activity 2" ],
-					wed: [ "Week B Wednesday Activity 1", "Week B Wednesday Activity 2" ],
-					thu: [ "Week B Thursday Activity 1", "Week B Thursday Activity 2" ],
-					fri: [ "Week B Friday Activity 1", "Week B Friday Activity 2" ],
-					sat: [ "Week B Saturday Activity 1", "Week B Saturday Activity 2" ],
-					sun: [ "Week B Sunday Activity 1", "Week B Sunday Activity 2" ]	
-				}
-			}
-		}
+		yearStartWeek: "b"
 	},
 
 	requiresVersion: "2.1.0", // Required version of MagicMirror
 
 	start: function() {
 		var self = this;
-
-		// Schedule update timer.
+		
 		setInterval(function() {
 			self.updateDom();
 		}, this.config.updateInterval);
@@ -56,25 +32,18 @@ Module.register("MMM-FortnightSchedule", {
 		var schedule;
 
 		if (week === "a") {
-			console.log("WEEK A DETECTED");
-			schedule = this.defaults.config.schedule.a[day];
-			//schedule = this.config.schedule.a[day]; // For final version!
-			console.log("Schedule: ", schedule);
+			schedule = this.config.schedule.a[day];
 		}
 		
 		if (week === "b") {
-			console.log("WEEK B DETECTED");
-			schedule = this.defaults.config.schedule.b[day];
-			//schedule = this.config.schedule.b[day]; // For final version!
-			console.log("Schedule: ", schedule);
+			schedule = this.config.schedule.b[day];
 		}
 
 		if (schedule === undefined) {
 			return "NO DATA FOUND";
 		}
 
-		var timeslots = this.defaults.config.timeslots;
-		//var timeslots = this.config.timeslots; // For final version!
+		var timeslots = this.config.timeslots;
 
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
@@ -122,7 +91,6 @@ Module.register("MMM-FortnightSchedule", {
 		var day = this.getDisplayDate().locale("en").format("dddd");
 
 		var header = "Week " + week + " - " + day;
-		console.log("HEADER: ", header);
 
 		return header;
 	},
