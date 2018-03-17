@@ -60,9 +60,11 @@ Module.register("MMM-FortnightSchedule", {
 	createNoDataReturn: function() {
 		var wrapper = document.createElement("table");
 		var tr = document.createElement("tr");
+		tr.className = "schedule-line";
+
 		var td = document.createElement("td");
 		var text = document.createTextNode("No Schedule found");
-		td.className = "xsmall bright entry";
+		td.className = "entry";
 
 		wrapper.appendChild(tr);
 		tr.appendChild(td);
@@ -114,11 +116,11 @@ Module.register("MMM-FortnightSchedule", {
 		row.className = "schedule-line";
 		
 		var tdtime = document.createElement("td");
-		tdtime.className = "xsmall dimmed timeslot";
+		tdtime.className = "dimmed timeslot";
 		tdtime.appendChild(document.createTextNode(time));
 
 		var tdentry = document.createElement("td");
-		tdentry.className = "xsmall bright entry";
+		tdentry.className = "bright entry";
 		tdentry.appendChild(document.createTextNode(entry));
 
 		row.appendChild(tdtime);
