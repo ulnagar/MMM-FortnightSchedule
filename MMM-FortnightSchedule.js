@@ -44,13 +44,17 @@ Module.register("MMM-FortnightSchedule", {
 		var day = "mon";
 		var schedule;
 		if(week === "a") {
+			console.log("WEEK A DETECTED");
 			schedule = this.config.schedule.a[day];
+			console.log("Schedule: ", schedule);
 		} else {
+			console.log("WEEK B DETECTED");
 			schedule = this.config.schedule.b[day];
+			console.log("Schedule: ", schedule);
 		}
 
-		if(schedule == undefined) {
-			return null;
+		if(schedule === undefined) {
+			return "NO DATA FOUND";
 		}
 
 		var timeslots = this.config.timeslots;
