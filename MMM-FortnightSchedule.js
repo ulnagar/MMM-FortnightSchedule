@@ -40,7 +40,7 @@ Module.register("MMM-FortnightSchedule", {
 		}
 
 		if (schedule === undefined) {
-			return "NO DATA FOUND";
+			return this.createNoDataReturn();
 		}
 
 		var timeslots = this.config.timeslots;
@@ -56,6 +56,20 @@ Module.register("MMM-FortnightSchedule", {
 
 		return wrapper;
 	},
+
+	createNoDataReturn: function() {
+		var wrapper = document.createElement("table");
+		var tr = document.createElement("tr");
+		var td = document.createElement("td");
+		var text = document.createTextNode("No Schedule found");
+		td.className = "xsmall bright entry";
+
+		wrapper.appendChild(tr);
+		tr.appendChild(td);
+		td.appendChild(text);
+
+		return wrapper;
+	}
 
 	getDisplayDate: function() {
 		var threshold = moment().startOf("day")
