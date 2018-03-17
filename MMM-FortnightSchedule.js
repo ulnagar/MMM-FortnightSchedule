@@ -121,7 +121,10 @@ Module.register("MMM-FortnightSchedule", {
 		var week = this.getDisplayWeek().toUpperCase();
 		var day = this.getDisplayDate().locale("en").format("dddd");
 
-		return "Week " + week + " - " + day;
+		var header = "Week " + week + " - " + day;
+		console.log("HEADER: ", header);
+
+		return header;
 	},
 
 	createTimetableRow: function(time, entry) {
