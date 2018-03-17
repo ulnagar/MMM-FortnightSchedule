@@ -45,11 +45,13 @@ Module.register("MMM-FortnightSchedule", {
 		var schedule;
 		if(week === "a") {
 			console.log("WEEK A DETECTED");
-			schedule = this.config.schedule.a[day];
+			schedule = this.defaults.config.schedule.a[day];
+			//schedule = this.config.schedule.a[day]; // For final version!
 			console.log("Schedule: ", schedule);
 		} else {
 			console.log("WEEK B DETECTED");
-			schedule = this.config.schedule.b[day];
+			schedule = this.defaults.config.schedule.b[day];
+			//schedule = this.config.schedule.b[day]; // For final version!
 			console.log("Schedule: ", schedule);
 		}
 
@@ -57,7 +59,8 @@ Module.register("MMM-FortnightSchedule", {
 			return "NO DATA FOUND";
 		}
 
-		var timeslots = this.config.timeslots;
+		var timeslots = this.defaults.config.timeslots;
+		//var timeslots = this.config.timeslots; // For final version!
 
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
