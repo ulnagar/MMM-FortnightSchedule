@@ -86,7 +86,7 @@ Module.register("MMM-FortnightSchedule", {
 		row.appendChild(tdentry);
 
 		return row;
-	}
+	},
 
 	getScripts: function() {
 		return [];
