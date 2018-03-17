@@ -69,7 +69,7 @@ Module.register("MMM-FortnightSchedule", {
 		td.appendChild(text);
 
 		return wrapper;
-	}
+	},
 
 	getDisplayDate: function() {
 		var threshold = moment().startOf("day")
