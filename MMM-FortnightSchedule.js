@@ -14,8 +14,14 @@ Module.register("MMM-FortnightSchedule", {
 		config: {
 			timeslots: [ "Period 1", "Period 2"],
 			schedule: {
-				a: [ "Week A Activity 1", "Week A Activity 2"],
-				b: [ "Week B Activity 1", "Week B Activity 2"]
+				a: { 
+					mon: [ "Week A Monday Activity 1", "Week A Monday Activity 2" ],
+					tue: [ "Week A Tuesday Activity 1", "Week A Tuesday Activity 2" ]
+				},
+				b: { 
+					mon: [ "Week B Monday Activity 1", "Week B Monday Activity 2" ],
+					tue: [ "Week B Tuesday Activity 1", "Week B Tuesday Activity 2" ]
+				}
 			}
 		}
 	},
@@ -34,13 +40,49 @@ Module.register("MMM-FortnightSchedule", {
 	getDom: function() {
 		var self = this;
 
+		var week = "a";
+		var day = "mon";
+		var schedule;
+		if(week === "a") {
+			schedule = this.config.schedule.a[day];
+		} else {
+			schedule = this.config.schedule.b[day];
+		}
+
+		if(schedule == undefined) {
+			return null;
+		}
+
+		var timeslots = this.config.timeslots;
+
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
-		wrapper.innerHTML = "This is the content!";
-		wrapper.innerHTML = this.defaults.config.schedule.a[0];
-	
+		for (let index = 0; index < schedule.length; index++) {
+			const entry = schedule[index];
+			const time = timeslots[index];
+			var row = this.createTimetableRow(time, entry);
+			wrapper.appendChild(row);
+		}
+
 		return wrapper;
 	},
+
+	createTimetableRow: function(time, entry) {
+		var row = document.createElement("tr");
+		
+		var tdtime = document.createElement("td");
+		tdtime.className = "xsmall dimmed lessontime";
+		tdtime.appendChild(document.createTextNode(time));
+
+		var tdentry = document.createElement("td");
+		tdentry.className = "xsmall bright lesson";
+		tdentry.appendChild(document.createTextNode(entry));
+
+		row.appendChild(tdtime);
+		row.appendChild(tdentry);
+
+		return row;
+	}
 
 	getScripts: function() {
 		return [];
