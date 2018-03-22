@@ -21,7 +21,7 @@ table.schedule-list {
 }
 
 tr.schedule-day {
-    border-bottom: solid 1px #3f3f3f;
+    border-bottom: solid 1px #222;
 }
 
 td.schedule-timeslot {
