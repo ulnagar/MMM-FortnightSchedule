@@ -17,6 +17,11 @@
 
 table.schedule-list {
     width: 100%;
+    border-collapse: collapse;
+}
+
+tr.schedule-day {
+    border-bottom: solid 1px #3f3f3f;
 }
 
 td.schedule-timeslot {
