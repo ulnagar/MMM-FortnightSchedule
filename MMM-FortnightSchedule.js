@@ -98,7 +98,7 @@ Module.register("MMM-FortnightSchedule", {
 		
 		var timeslot = document.createElement("span");
 		timeslot.className = "schedule-timeslot";
-		timeslot.appendChild(document.createTextNode(time.name));
+		timeslot.appendChild(document.createTextNode(slot.name));
 
 		row.appendChild(timeslot);
 
@@ -107,11 +107,11 @@ Module.register("MMM-FortnightSchedule", {
 
 			var entry = document.createElement("span");
 			entry.className = "schedule-title";
-			entry.appendChild(document.createTextNode(entry.title));
+			entry.appendChild(document.createTextNode(el.title));
 
 			var location = document.createElement("span");
 			location.className = "schedule-location";
-			location.appendChild(document.createTextNode(entry.location));
+			location.appendChild(document.createTextNode(el.location));
 
 			entryRow.appendChild(entry);
 			entryRow.appendChild(location);
