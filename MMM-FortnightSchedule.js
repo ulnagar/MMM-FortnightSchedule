@@ -31,44 +31,25 @@ Module.register("MMM-FortnightSchedule", {
 		var day = this.getDisplayDate().locale("en").format("ddd").toLowerCase();
 		var schedule;
 
-		if (week === "a") {
-			schedule = this.config.schedule.a[day];
-		}
-		
-		if (week === "b") {
-			schedule = this.config.schedule.b[day];
-		}
-
-		if (schedule === undefined) {
-			return this.createNoDataReturn();
-		}
+		schedule = this.config.timetable.filter(function (el) {
+			return el.week === week && el.day === day;
+		});
 
 		var timeslots = this.config.timeslots;
 
 		// create element wrapper for show into the module
 		var wrapper = document.createElement("div");
-		for (let index = 0; index < schedule.length; index++) {
-			const entry = schedule[index];
-			const time = timeslots[index];
-			var row = this.createTimetableRow(time, entry);
+		wrapper.className = "schedule-list";
+
+		for (let index = 0; index < timeslots.length; index++) {
+			const slot = timeslots[index];
+			var daySchedule = schedule.filter(function (el) {
+				return el.slot === slot.id;
+			});
+			
+			var row = this.createTimetableRow(slot, daySchedule);
 			wrapper.appendChild(row);
 		}
-
-		return wrapper;
-	},
-
-	createNoDataReturn: function() {
-		var wrapper = document.createElement("table");
-		var tr = document.createElement("tr");
-		tr.className = "schedule-line";
-
-		var td = document.createElement("td");
-		var text = document.createTextNode("No Schedule found");
-		td.className = "entry";
-
-		wrapper.appendChild(tr);
-		tr.appendChild(td);
-		td.appendChild(text);
 
 		return wrapper;
 	},
@@ -111,20 +92,31 @@ Module.register("MMM-FortnightSchedule", {
 		return header;
 	},
 
-	createTimetableRow: function(time, entry) {
-		var row = document.createElement("tr");
-		row.className = "schedule-line";
+	createTimetableRow: function(slot, daySchedule) {
+		var row = document.createElement("div");
+		row.className = "schedule-day";
 		
-		var tdtime = document.createElement("td");
-		tdtime.className = "dimmed timeslot";
-		tdtime.appendChild(document.createTextNode(time));
+		var timeslot = document.createElement("span");
+		timeslot.className = "schedule-timeslot";
+		timeslot.appendChild(document.createTextNode(time.name));
 
-		var tdentry = document.createElement("td");
-		tdentry.className = "bright entry";
-		tdentry.appendChild(document.createTextNode(entry));
+		row.appendChild(timeslot);
 
-		row.appendChild(tdtime);
-		row.appendChild(tdentry);
+		daySchedule.forEach(el => {
+			var entryRow = document.createElement("div");
+
+			var entry = document.createElement("span");
+			entry.className = "schedule-title";
+			entry.appendChild(document.createTextNode(entry.title));
+
+			var location = document.createElement("span");
+			location.className = "schedule-location";
+			location.appendChild(document.createTextNode(entry.location));
+
+			entryRow.appendChild(entry);
+			entryRow.appendChild(location);
+			row.appendChild(entryRow);
+		});
 
 		return row;
 	},

@@ -9,29 +9,52 @@
  *
  */
 
-.module.MMM-FortnightSchedule {
-    max-width: 300px;
+.MMM-FortnightSchedule {
+    max-width: 500px;
 }
 
-.schedule {
+.MMM-FortnightSchedule .schedule-list {
     width: 100%;
 }
 
- .schedule-line {
-     width: 100%;
-     font-size: 20px;
-     line-height: 24px;
-     border-bottom: solid 1px #222;
-     padding: 4px 0;
- }
+.MMM-FortnightSchedule .schedule-day {
+    display: block;
+    width: 100%;
+    position: relative;
+    font-size: 20px;
+    line-height: 24px;
+    border-bottom: solid 1px #222;
+    padding: 4px 0;
+}
 
- .timeslot {
-     text-align: right;
-     white-space: nowrap;
-     padding-right: 2em;
-     width: 1ex;
- }
+.MMM-FortnightSchedule .schedule-day .schedule-timeslot {
+    position: absolute;
+    color: #fff;
+    top: 4px;
+    left: 0px;
+    line-height: 24px;
+    text-align: left;
+}
 
- .entry {
-     text-align: left;
- }
+.MMM-FortnightSchedule .schedule-day div {
+    /* This is the timetable row. Need to ensure that if there is more than one, it will need to be on a separate line */
+    display: block;
+}
+
+.MMM-FortnightSchedule .schedule-day .schedule-title,
+.MMM-FortnightSchedule .schedule-day .schedule-location {
+    display: block;
+    padding-left: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.MMM-FortnightSchedule .schedule-day .schedule-title {
+    color: #fff;
+    padding-top: 2px;
+}
+
+.MMM-FortnightSchedule .schedule-day .schedule-location {
+    font-size: 16px;
+}
