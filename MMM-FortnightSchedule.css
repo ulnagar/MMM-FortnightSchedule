@@ -11,10 +11,16 @@
 
 .MMM-FortnightSchedule {
     max-width: 500px;
+    width: 300px;
+    font-size: 24px;
 }
 
 table.schedule-list {
     width: 100%;
+}
+
+td span.schedule-timeslot {
+    vertical-align: top;
 }
 
 td span.schedule-title,
@@ -33,4 +39,5 @@ td span.schedule-title {
 
 td span.schedule-location {
     font-size: 16px;
+    line-height: 16px;
 }
