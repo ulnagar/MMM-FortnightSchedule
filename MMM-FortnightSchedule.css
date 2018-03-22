@@ -19,8 +19,9 @@ table.schedule-list {
     width: 100%;
 }
 
-td span.schedule-timeslot {
+td.schedule-timeslot {
     vertical-align: top;
+    text-align: left;
 }
 
 td span.schedule-title,
