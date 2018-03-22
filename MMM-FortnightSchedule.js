@@ -38,7 +38,7 @@ Module.register("MMM-FortnightSchedule", {
 		var timeslots = this.config.timeslots;
 
 		// create element wrapper for show into the module
-		var wrapper = document.createElement("div");
+		var wrapper = document.createElement("table");
 		wrapper.className = "schedule-list";
 
 		for (let index = 0; index < timeslots.length; index++) {
@@ -93,17 +93,24 @@ Module.register("MMM-FortnightSchedule", {
 	},
 
 	createTimetableRow: function(slot, daySchedule) {
-		var row = document.createElement("div");
+		var row = document.createElement("tr");
 		row.className = "schedule-day";
-		
-		var timeslot = document.createElement("span");
+
+		var entries = daySchedule.length();
+		var span = 0;
+		if (entries > 0) {
+			span = entries * 2;
+		}
+
+		var timeslot = document.createElement("td");
+		timeslot.rowSpan = span;
 		timeslot.className = "schedule-timeslot";
 		timeslot.appendChild(document.createTextNode(slot.name));
 
 		row.appendChild(timeslot);
 
 		daySchedule.forEach(el => {
-			var entryRow = document.createElement("div");
+			var entryRow = document.createElement("td");
 
 			var entry = document.createElement("span");
 			entry.className = "schedule-title";
