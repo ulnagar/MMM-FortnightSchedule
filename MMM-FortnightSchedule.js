@@ -96,7 +96,8 @@ Module.register("MMM-FortnightSchedule", {
 		var row = document.createElement("tr");
 		row.className = "schedule-day";
 
-		var entries = daySchedule.length();
+		var entries = 0;
+		daySchedule.forEach(() => entries++);
 		var span = 0;
 		if (entries > 0) {
 			span = entries * 2;
