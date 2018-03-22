@@ -98,17 +98,20 @@ Module.register("MMM-FortnightSchedule", {
 
 		var entries = 0;
 		daySchedule.forEach(() => entries++);
-		var span = 0;
-		if (entries > 0) {
-			span = entries * 2;
-		}
 
 		var timeslot = document.createElement("td");
-		timeslot.rowSpan = span;
+		if (entries > 0) {
+			timeslot.rowSpan = entries * 2;
+		}
 		timeslot.className = "schedule-timeslot";
 		timeslot.appendChild(document.createTextNode(slot.name));
 
 		row.appendChild(timeslot);
+
+		if (entries === 0) {
+			var entryRow = document.createElement("td");
+			row.appendChild(entryRow);
+		};
 
 		daySchedule.forEach(el => {
 			var entryRow = document.createElement("td");
