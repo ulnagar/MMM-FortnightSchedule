@@ -100,7 +100,7 @@ Module.register("MMM-FortnightSchedule", {
 		daySchedule.forEach(() => entries++);
 
 		var timeslot = document.createElement("td");
-		if (entries > 0) {
+		if (entries > 1) {
 			timeslot.rowSpan = entries * 2;
 		}
 		timeslot.className = "schedule-timeslot";
